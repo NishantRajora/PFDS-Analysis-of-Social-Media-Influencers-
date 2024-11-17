@@ -60,7 +60,9 @@ def add_data(data):
         'comments_2023': int(input("Enter Comments in 2023: ")),
         'comments_2024': int(input("Enter Comments in 2024: "))
     }
-    data = data.append(new_data, ignore_index=True)
+    # Convert the dictionary to a DataFrame and use pd.concat to add it
+    new_data_df = pd.DataFrame([new_data])
+    data = pd.concat([data, new_data_df], ignore_index=True)
     print("\nNew data added successfully.")
     return data
 
@@ -120,9 +122,6 @@ def plot_follower_counts(data):
     plt.tight_layout()  # Adjust layout to avoid cutoff labels
     plt.show()
 
-
-
-
 def main():
     data = load_data()
     while True:
@@ -155,6 +154,6 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-
 if __name__ == "__main__":
     main()
+
