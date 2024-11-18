@@ -100,29 +100,25 @@ def plot_graph(data, influencer_name):
 
 # Plot Follower Counts for Different Influencers
 def plot_follower_counts(data):
-    # Select influencers and their follower counts
     if data.empty:
         print("No data available to plot.")
         return
-    
-    # Sort by follower count to make the chart more readable (optional)
+
     sorted_data = data.sort_values(by='follower_count', ascending=False)
-    
-    # Get influencer names and follower counts
+
     influencer_names = sorted_data['influencer_name']
     follower_counts = sorted_data['follower_count']
-    
-    # Plotting
+
     plt.figure(figsize=(12, 8))
     plt.bar(influencer_names, follower_counts, color='skyblue')
     plt.title("Follower Counts of Influencers")
     plt.xlabel("Influencer")
     plt.ylabel("Follower Count")
-    plt.xticks(rotation=45, ha='right')  # Rotate names for better readability
-    plt.tight_layout()  # Adjust layout to avoid cutoff labels
+    plt.xticks(rotation=45, ha='right')  
+    plt.tight_layout()  
     plt.show()
 
-def main():
+def menu():
     data = load_data()
     while True:
         print("\n--- Influencer Data Management ---")
@@ -154,6 +150,5 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 
-if __name__ == "__main__":
-    main()
 
+menu()
